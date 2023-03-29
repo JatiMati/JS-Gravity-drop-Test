@@ -1,4 +1,5 @@
 const square = document.querySelector('.square');
+const text = document.querySelector('h1');
 let flagMove = false;
 let flagHold = false;
 let x = 500;
@@ -7,11 +8,16 @@ let xSpeed;
 let ySpeed;
 let speedVariable = 1;
 
+text.style.left = `${window.innerWidth / 2}px`;
+text.style.top = `${window.innerHeight / 2 - 100}px`;
 square.style.left = `${window.innerWidth / 2}px`;
-square.style.top = `${window.innerHeight - 150}px`;
-
+square.style.top = `${window.innerHeight / 2}px`;
+speed()
 function hold() {
     flagHold = true;
+    text.style.display = "none";
+    square.style.backgroundColor = "grey";
+
 
 }
 function release() {
@@ -19,6 +25,7 @@ function release() {
     fall()
     xThrow()
     yThrow()
+    square.style.backgroundColor = "black";
 }
 function action(e) {
     if (flagHold) {
@@ -85,7 +92,9 @@ function fall() {
         square.style.top = `${y}px`;
 
         y = gravityForce + y;
-        gravityForce = gravityForce * 1.05;
+        if (gravityForce < 25) {
+            gravityForce = gravityForce * 1.05;
+        }
         if (y > window.innerHeight - 50) {
             clearInterval(fallInterval)
         }
@@ -101,7 +110,7 @@ function speed() {
 
 
 
-    setInterval(() => {
+    let speedInterval = setInterval(() => {
         //pobiera pozycje 1     100ms
         // pobiera pozycje 2    
         // oblicza prędkość
@@ -123,9 +132,16 @@ function speed() {
             xSpeed = (positionXTwo - positionXOne) / 10;
             ySpeed = (positionYTwo - positionYOne) / 10;
         }
+        console.log(xSpeed, ySpeed);
+
     }, 10)
+    // if (xSpeed == 0 && ySpeed == 0) {
+    //     clearInterval(speedInterval);
+    // }
+
+
 }
-speed()
+
 
 
 
