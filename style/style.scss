@@ -1,0 +1,19 @@
+/* --height: 100px;
+$width: 100px; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    /* transition: 0.1s; */
+    transform: translate(-50%, -50%);
+}
