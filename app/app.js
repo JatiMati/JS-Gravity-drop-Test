@@ -57,7 +57,7 @@ function yThrow() {
         }
         speedReduction = speedReduction / 1.02 - 0.1;
 
-        if (y > window.innerHeight - 50) {
+        if (y > window.innerHeight - 100) {
             clearInterval(throwYInterval)
         }
     }, 10)
@@ -95,7 +95,7 @@ function fall() {
         if (gravityForce < 25) {
             gravityForce = gravityForce * 1.05;
         }
-        if (y > window.innerHeight - 50) {
+        if (y > window.innerHeight - 100) {
             clearInterval(fallInterval)
         }
     }, 10)
